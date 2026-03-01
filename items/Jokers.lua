@@ -30,7 +30,7 @@
 --         return true
 --     end,
 
-    -- set_badges = create_badge_ds,
+    -- set_badges = create_badge_tengoku,
 
     -- credit = {
     --     art = "",
@@ -194,7 +194,7 @@ SMODS.Joker({
     cost = 6,
     rarity = 2,
     blueprint_compat = false,
-    eternal_compat = true,
+    eternal_compat = false,
     unlocked = true,
     discovered = true,
     atlas = 'jokers',
@@ -533,8 +533,11 @@ SMODS.Joker({
 	config = {
         extra = {
             xmult = 1.5,
+            xmult_shout = 5,
             position = -1,
-            enable = false
+            enable = false,
+            is_shouting = false,
+            affected_cards = {}
         }
     },
 
@@ -546,22 +549,40 @@ SMODS.Joker({
                     card.ability.extra.position = k
                     if k <= #G.jokers.cards-3 then
                         card.ability.extra.enable = true
+                        card.ability.extra.affected_cards[1] = G.jokers.cards[k+1]
+                        card.ability.extra.affected_cards[2] = G.jokers.cards[k+2]
+                        card.ability.extra.affected_cards[3] = G.jokers.cards[k+3]
+                        card.ability.extra.is_shouting = pseudorandom(pseudoseed('conductor'), 1, 100) > 80
                     end
                 end
             end
         end
         if context.other_joker and card.ability.extra.enable == true then
+            
             for k, v in ipairs(G.jokers.cards) do
-                if v == context.other_joker and (k > card.ability.extra.position and k <= card.ability.extra.position+3) then
-                    return {
-                        xmult = card.ability.extra.xmult,
-                        sound = "rh_glee_club_a_"..(k - card.ability.extra.position),
-                        remove_default_message = true,
-                        message = "x"..card.ability.extra.xmult.." Mult",
-                        pitch = 1,
-                        colour = G.C.MULT,
-                        message_card = context.other_joker
-                    }
+                if not card.ability.extra.is_shouting then
+                    if v == context.other_joker and (k > card.ability.extra.position and k <= card.ability.extra.position+3) then
+                        return {
+                            xmult = card.ability.extra.xmult,
+                            sound = "rh_glee_club_a_"..(k - card.ability.extra.position),
+                            remove_default_message = true,
+                            message = "x"..card.ability.extra.xmult.." Mult",
+                            pitch = 1,
+                            colour = G.C.MULT,
+                            message_card = context.other_joker
+                        }
+                    end
+                else
+                    if context.other_joker == card.ability.extra.affected_cards[3] then
+                        return {
+                            xmult = card.ability.extra.xmult_shout,
+                            sound = "rh_glee_club_shout",
+                            remove_default_message = true,
+                            message = "x"..card.ability.extra.xmult_shout.." Mult",
+                            pitch = 1,
+                            colour = G.C.MULT,
+                        }
+                    end
                 end
             end
         end

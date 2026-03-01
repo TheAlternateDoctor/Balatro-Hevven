@@ -123,3 +123,8 @@ SMODS.Sound({
     key="glee_club_a_3",
     path="glee_club_a_3.ogg"
 })
+
+SMODS.Sound({
+    key="glee_club_shout",
+    path="glee_club_shout.ogg"
+})
