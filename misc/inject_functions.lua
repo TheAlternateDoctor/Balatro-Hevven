@@ -236,7 +236,6 @@ function rh_draw_from_play_to_hand()
     end
     for k, v in ipairs(G.play.cards) do
         if v.ability["rh_you_sticker"] then
-            draw_card(G.play,G.hand, it*100/play_count,'down', false, v)
             -- We check if the card didn't already get selected to be kept
             local exists = false
             for kk, vk in ipairs(cards_to_keep) do
@@ -246,9 +245,12 @@ function rh_draw_from_play_to_hand()
                     break
                 end
             end
+            draw_card(G.play,G.hand, 1,'down', false, v)
+            cards_to_keep[#cards_to_keep+1] = v
         end
     end
     G.GAME.current_round.rh_cards_to_keep = cards_to_keep
+    sendDebugMessage(inspect(rh_simplify_cards(cards_to_keep)), "rhPlayToHand")
     --We still return the cards so they don't get also discarded by accident
     return cards_to_keep
 end
