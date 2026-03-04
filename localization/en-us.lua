@@ -153,7 +153,49 @@ return {
                     "right each gives {X:mult,C:white} X#1# {} Mult",
                     "{C:inactive}(Only applies if there are 3 {C:attention}Jokers{C:inactive})"
                 }
-            }
+            },
+            j_rh_rapmen = {
+                name = 'RAPMEN',
+                text = {
+                    {
+                        "The {C:attention}durability{} of",
+                        "{C:attention}Food Jokers{} is doubled",
+                        "(when applicable)"
+                    },
+                    {
+                        "{C:attention}Food Jokers{} appear",
+                        "more often"
+                    }
+                }
+            },
+            j_rh_rapwomen = {
+                name = 'Rap Women',
+                text = {
+                    {
+                        "The {C:attention}durability{} of",
+                        "{C:attention}Food Jokers{} is halved",
+                        "(when applicable)"
+                    },
+                    {
+                        "The {C:attention}effect{} of",
+                        "{C:attention}Food Jokers{} is doubled",
+                        "(when applicable)"
+                    },
+                    {
+                        "{C:attention}Food Jokers{} appear",
+                        "more often"
+                    }
+                }
+            },
+            j_rh_half_soda = {
+                name="Half Full Diet Cola",
+                text={
+                    "Sell this card to",
+                    "create a free",
+                    "{C:attention}Double Tag",
+                    "{C:inactive}(It's certainly not half empty...)"
+                },
+            },
         },
         Flow = {
             c_rh_you = {

@@ -460,6 +460,9 @@ SMODS.Joker({
     }
 })
 
+--Putting the Rap duos in the middle of the pool
+SMODS.load_file("items/Rapmen.lua")()
+
 -- Widget (uncommon)
 SMODS.Joker({
     key = "widget",
@@ -1432,5 +1435,50 @@ SMODS.Joker({
         art = "missingnumber",
         code = "TheAltDoc",
         concept = "TheAltDoc"
+    }
+})
+
+SMODS.Joker({
+    key = "half_soda",
+
+    loc_vars = function(self, info_queue, card)
+                return {
+                    vars = {
+                    }
+                }
+    end,
+    cost = 0,
+    rarity = 2,
+    blueprint_compat = true,
+    eternal_compat = false,
+    unlocked = true,
+    discovered = true,
+    atlas = 'jokers',
+    pos = {
+        x = 2,
+        y = 5
+    },
+    in_pool = function()
+        return false
+    end,
+
+    calculate = function(self, card, context)
+        if context.selling_self then
+            G.E_MANAGER:add_event(Event({
+                func = (function()
+                    add_tag(Tag('tag_double'))
+                    play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
+                    play_sound('holo1', 1.2 + math.random()*0.1, 0.4)
+                    return true
+                end)
+            }))
+            return nil, true
+        end
+    end,
+
+    credit = {
+        art = "localthunk, Nate Candles",
+        code = "localthunk",
+        concept = "localthunk, Nate Candles"
     }
 })

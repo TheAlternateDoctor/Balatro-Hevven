@@ -4,16 +4,16 @@ local loc_txt = {
         name = 'Endless Remix',
         text = {
             "This {C:attention}Joker{} transforms into",
-            "another one at the end of",
-            "{C:attention}every round",
+            "another {C:attention}Joker{} of the same",
+            "rarity at the end of {C:attention}every round",
         }
     },
     ['fr'] = {
         name = 'Remix infini',
         text = {
             "Ce {C:attention}Joker{} se transforme",
-            "en un autre {C:attention}Joker{} à la",
-            "fin de {C:attention}chaque manche",
+            "en un autre {C:attention}Joker{} de même",
+            "rareté à la fin de {C:attention}chaque manche",
         }
     },
 }

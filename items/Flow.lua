@@ -37,7 +37,6 @@ SMODS.Consumable({
             local card = SMODS.create_card(card_t)
             G.consumeables:emplace(card)
         else
-            inc_flow_count()
             local to_discard = {}
             for k, v in ipairs(G.hand.cards) do
                     to_discard[#to_discard+1] = v
@@ -91,8 +90,7 @@ SMODS.Consumable({
             }
             local card = SMODS.create_card(card_t)
             G.consumeables:emplace(card)
-        else
-            inc_flow_count()     
+        else     
             G.E_MANAGER:add_event(Event({
                 func = function() 
                     local any_selected = nil
@@ -166,7 +164,6 @@ SMODS.Consumable({
             local card = SMODS.create_card(card_t)
             G.consumeables:emplace(card)
         else
-            inc_flow_count()
             local to_discard = {}
             local highlighted_cards = {}
             for k, v in ipairs(G.hand.cards) do
@@ -304,7 +301,6 @@ SMODS.Consumable({
             local card = SMODS.create_card(card_t)
             G.consumeables:emplace(card)
         else
-            inc_flow_count()
             local to_discard = {}
             local highlighted_cards = {}
             for k, v in ipairs(G.hand.cards) do
@@ -433,7 +429,6 @@ SMODS.Consumable({
             local card = SMODS.create_card(card_t)
             G.consumeables:emplace(card)
         else
-            inc_flow_count()
             add_flow_tag(Tag('tag_rh_simple_tap'))
             play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
             play_sound('holo1', 1.2 + math.random()*0.1, 0.4)
@@ -491,7 +486,6 @@ SMODS.Consumable({
             local card = SMODS.create_card(card_t)
             G.consumeables:emplace(card)
         else
-            inc_flow_count()
             G.GAME.current_round.rh_flow_new_record = true
             G.GAME.current_round.rh_flow_new_record_to_beat = G.GAME.round_scores['hand'].amt
             add_flow_tag(Tag('tag_rh_new_record'))
@@ -543,7 +537,6 @@ SMODS.Consumable({
             local card = SMODS.create_card(card_t)
             G.consumeables:emplace(card)
         else
-            inc_flow_count()
             G.E_MANAGER:add_event(
 			Event({
                 trigger = "immediate",
@@ -625,7 +618,6 @@ SMODS.Consumable({
             local card = SMODS.create_card(card_t)
             G.consumeables:emplace(card)
         else
-            inc_flow_count()
             G.GAME.current_round.rh_flow_good_parts = true
             G.GAME.current_round.rh_flow_good_parts_chances = card.ability.extra.chances
             G.GAME.current_round.rh_flow_good_parts_percentage = card.ability.extra.percentage
@@ -702,7 +694,6 @@ SMODS.Consumable({
             local card = SMODS.create_card(card_t)
             G.consumeables:emplace(card)
         else
-            inc_flow_count()
             add_flow_tag(Tag('tag_rh_you'))
             play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
             play_sound('holo1', 1.2 + math.random()*0.1, 0.4)
@@ -765,7 +756,6 @@ SMODS.Consumable({
             local card = SMODS.create_card(card_t)
             G.consumeables:emplace(card)
         else
-            inc_flow_count()
             G.E_MANAGER:add_event(Event({func = function()
                 ease_discard(card.ability.extra.discards)
                 ease_hands_played(card.ability.extra.hands)
@@ -830,7 +820,6 @@ SMODS.Consumable({
             local card = SMODS.create_card(card_t)
             G.consumeables:emplace(card)
         else
-            inc_flow_count()
             add_flow_tag(Tag('tag_rh_skill_star'))
             G.GAME.current_round.skill_star = card.ability.extra
             play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
@@ -885,7 +874,6 @@ SMODS.Consumable({
             local card = SMODS.create_card(card_t)
             G.consumeables:emplace(card)
         else
-            inc_flow_count()
             G.E_MANAGER:add_event(Event({
                 trigger = "after",
                 delay = 0.4,

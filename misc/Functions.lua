@@ -1,11 +1,3 @@
-function inc_flow_count()
-    if G.GAME.consumeable_usage_total.flow ~= nil then
-        G.GAME.consumeable_usage_total.flow = G.GAME.consumeable_usage_total.flow + 1
-    else
-        G.GAME.consumeable_usage_total.flow = 1
-    end
-end
-
 function Card:remove_edition()
     self.edition.chips = 0
     self.edition.holo = false
